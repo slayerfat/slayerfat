@@ -1,0 +1,23 @@
+{
+  "name": "slayerfat.com.ve",
+  "version": "0.0.0",
+  "description": "desarrollo de slayerfat.com.ve y dojo de grunt, node, bower u otras tegnologias.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slayerfat/slayerfat.com.ve"
+  },
+  "author": "slayerfat slayerfat@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slayerfat/slayerfat.com.ve/issues"
+  },
+  "homepage": "https://github.com/slayerfat/slayerfat.com.ve",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "^0.8.1"
+  }
+}
