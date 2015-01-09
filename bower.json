@@ -1,0 +1,20 @@
+{
+  "name": "slayerfat.com.ve",
+  "version": "0.0.0",
+  "homepage": "https://github.com/slayerfat/slayerfat.com.ve",
+  "authors": [
+    "slayerfat <slayerfat@gmail.com>"
+  ],
+  "description": "pagina web de slayerfat, dojo de bower, grunt, u otras tegnologias necesarias para implementarlo",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
