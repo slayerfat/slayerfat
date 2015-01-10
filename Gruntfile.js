@@ -1,34 +1,51 @@
 module.exports = function(grunt) {
 
+  // paths
+  var config = {
+    app: 'app',
+    dist: 'dist'
+  };
+
   // configuracion general
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    // Project settings
+    config: config,
 
     concat: {
       options: {
         separator: ';',
       },
       dist: {
-        src: ['app/scripts/js/*.js'],
-        dest: 'dist/scripts/js/built.js',
+        src: ['<%= config.app %>/scripts/js/*.js'],
+        dest: '<%= config.dist %>/scripts/js/built.js',
         nonull: true,
       },
     },
 
     uglify: {
-      build: {
-          src: 'dist/scripts/js/built.js',
-          dest: 'dist/scripts/js/built.min.js'
+      dist: {
+          src: '<%= config.dist %>/scripts/js/built.js',
+          dest: '<%= config.dist %>/scripts/js/built.min.js'
       }
     },
-
+    // optimizar imagenes
     imagemin: {
-      dynamic: {
+      dev: {
         files: [{
             expand: true,
-            cwd: 'app/images/',
+            cwd: '<%= config.app %>/images/',
             src: ['**/*.{png,jpg,gif}'],
-            dest: 'dist/images/'
+            dest: '<%= config.app %>/images/'
+        }]
+      },
+      dist: {
+        files: [{
+            expand: true,
+            cwd: '<%= config.app %>/images/',
+            src: ['**/*.{png,jpg,gif}'],
+            dest: '<%= config.dist %>/images/'
         }]
       }
     },
@@ -39,7 +56,7 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'app/css/main.css': 'app/css/scss/main.scss'
+          '<%= config.app %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
         }
       },
       dist: {
@@ -47,9 +64,27 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          'dist/css/main.css': 'app/css/scss/main.scss'
+          '<%= config.dist %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
         }
       }
+    },
+
+    // inyecta dependencias al archivo
+    wiredep: {
+      target: {
+        src: '<%= config.app %>/index.php' // point to your HTML file.
+      }
+    },
+
+    useminPrepare: {
+      html: '<%= config.app %>/index.html',
+      options: {
+        dest: '<%= config.dist %>'
+      }
+    },
+
+    // Performs rewrites based on rev and the useminPrepare configuration
+    usemin: {
     },
 
     watch: {
@@ -65,13 +100,26 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-wiredep');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-filerev');
+  grunt.loadNpmTasks('grunt-usemin');
 
+  // en terminal 'grunt build':
+  grunt.registerTask('build', [
+    'concat',
+    'uglify',
+    'imagemin:dist',
+    'sass:dist'
+  ]);
   // en terminal 'grunt' por defecto:
   grunt.registerTask('default', [
     'concat',
     'uglify',
-    'imagemin',
-    'sass'
+    'imagemin:dev',
+    'sass:dev',
+    'useminPrepare',
+    'usemin'
   ]);
 
 };
