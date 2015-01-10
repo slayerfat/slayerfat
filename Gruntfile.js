@@ -19,15 +19,15 @@ module.exports = function(grunt) {
     //   },
     //   dist: {
     //     src: ['<%= config.app %>/scripts/js/*.js'],
-    //     dest: '<%= config.dist %>/scripts/js/built.js',
+    //     dest: '<%= config.dist %>/<%= pkg.version %>/scripts/js/built.js',
     //     nonull: true,
     //   },
     // },
 
     // uglify: {
     //   dist: {
-    //       src: '<%= config.dist %>/scripts/js/built.js',
-    //       dest: '<%= config.dist %>/scripts/js/built.min.js'
+    //       src: '<%= config.dist %>/<%= pkg.version %>/scripts/js/built.js',
+    //       dest: '<%= config.dist %>/<%= pkg.version %>/scripts/js/built.min.js'
     //   }
     // },
     // optimizar imagenes
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: '<%= config.app %>/images/',
             src: ['**/*.{png,jpg,gif}'],
-            dest: '<%= config.dist %>/images/'
+            dest: '<%= config.dist %>/<%= pkg.version %>/images/'
         }]
       }
     },
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
           style: 'expanded'
         },
         files: {
-          '<%= config.dist %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
+          '<%= config.dist %>/<%= pkg.version %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
         }
       }
     },
@@ -79,19 +79,19 @@ module.exports = function(grunt) {
     useminPrepare: {
       html: '<%= config.app %>/index.php',
       options: {
-        dest: '<%= config.dist %>'
+        dest: '<%= config.dist %>/<%= pkg.version %>'
       }
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= config.dist %>/index.php'],
+      html: ['<%= config.dist %>/<%= pkg.version %>/index.php'],
     },
 
     copy: {
       task0: {
         src: '<%= config.app %>/index.php',
-        dest: '<%= config.dist %>/index.php'
+        dest: '<%= config.dist %>/<%= pkg.version %>/index.php'
       }
     },
 
