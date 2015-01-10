@@ -13,23 +13,23 @@ module.exports = function(grunt) {
     // Project settings
     config: config,
 
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: ['<%= config.app %>/scripts/js/*.js'],
-        dest: '<%= config.dist %>/scripts/js/built.js',
-        nonull: true,
-      },
-    },
+    // concat: {
+    //   options: {
+    //     separator: ';',
+    //   },
+    //   dist: {
+    //     src: ['<%= config.app %>/scripts/js/*.js'],
+    //     dest: '<%= config.dist %>/scripts/js/built.js',
+    //     nonull: true,
+    //   },
+    // },
 
-    uglify: {
-      dist: {
-          src: '<%= config.dist %>/scripts/js/built.js',
-          dest: '<%= config.dist %>/scripts/js/built.min.js'
-      }
-    },
+    // uglify: {
+    //   dist: {
+    //       src: '<%= config.dist %>/scripts/js/built.js',
+    //       dest: '<%= config.dist %>/scripts/js/built.min.js'
+    //   }
+    // },
     // optimizar imagenes
     imagemin: {
       dev: {
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
     },
 
     useminPrepare: {
-      html: '<%= config.app %>/index.html',
+      html: '<%= config.app %>/index.php',
       options: {
         dest: '<%= config.dist %>'
       }
@@ -85,17 +85,26 @@ module.exports = function(grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
+      html: ['<%= config.dist %>/index.php'],
     },
 
-    watch: {
-      files: ['<%= concat.dist.src %>'],
-      tasks: ['concat']
-    }
+    copy: {
+      task0: {
+        src: '<%= config.app %>/index.php',
+        dest: '<%= config.dist %>/index.php'
+      }
+    },
+
+    // watch: {
+    //   files: ['<%= concat.dist.src %>'],
+    //   tasks: ['concat']
+    // }
 
   });
 
   // actividades o tareas o funciones o lo que sea:
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -106,11 +115,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-usemin');
 
   // en terminal 'grunt build':
+  // grunt.registerTask('build', [
+  //   'concat',
+  //   'uglify',
+  //   'imagemin:dist',
+  //   'sass:dist'
+  // ]);
   grunt.registerTask('build', [
+    'sass:dist',
+    'copy:task0',
+    'useminPrepare',
     'concat',
+    'cssmin',
     'uglify',
-    'imagemin:dist',
-    'sass:dist'
+    'usemin'
   ]);
   // en terminal 'grunt' por defecto:
   grunt.registerTask('default', [
