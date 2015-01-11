@@ -4,8 +4,7 @@
   <meta name="author" content="Alejandro Granadillo">
   <title>slayerfat.com.ve</title>
   <!-- bower:css -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
   <!-- endbower -->
-  <!-- build:css css/main.min.css -->
-  <link rel="stylesheet" href="css/main.css">
-  <!-- endbuild -->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>

@@ -13,45 +13,57 @@ module.exports = function(grunt) {
     // Project settings
     config: config,
 
-    // concat: {
-    //   options: {
-    //     separator: ';',
-    //   },
-    //   dist: {
-    //     src: ['<%= config.app %>/scripts/js/*.js'],
-    //     dest: '<%= config.dist %>/<%= pkg.version %>/scripts/js/built.js',
-    //     nonull: true,
-    //   },
-    // },
+    phplint:{
+      app: ['<%= config.app %>/**/*.php']
+    },
+    concat: {
+      options: {
+        separator: ';',
+      },
+      app: {
+        src: ['<%= config.app %>/scripts/js/*.js'],
+        dest: '<%= config.app %>/scripts/js/build/main.js',
+        nonull: true,
+      },
+      dist: {
+        src: ['<%= config.app %>/scripts/js/*.js'],
+        dest: '<%= config.dist %>/<%= pkg.version %>/scripts/js/build/main.js',
+        nonull: true,
+      },
+    },
 
-    // uglify: {
-    //   dist: {
-    //       src: '<%= config.dist %>/<%= pkg.version %>/scripts/js/built.js',
-    //       dest: '<%= config.dist %>/<%= pkg.version %>/scripts/js/built.min.js'
-    //   }
-    // },
+    uglify: {
+      app: {
+          src: '<%= config.app %>/scripts/js/build/main.js',
+          dest: '<%= config.app %>/scripts/js/build/build.min.js'
+      },
+      dist: {
+          src: '<%= config.app %>/scripts/js/build/main.js',
+          dest: '<%= config.dist %>/<%= pkg.version %>/scripts/js/build/build.min.js'
+      }
+    },
     // optimizar imagenes
     imagemin: {
-      dev: {
+      app: {
         files: [{
-            expand: true,
-            cwd: '<%= config.app %>/images/',
-            src: ['**/*.{png,jpg,gif}'],
-            dest: '<%= config.app %>/images/'
+          expand: true,
+          cwd: '<%= config.app %>/images/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: '<%= config.app %>/images/'
         }]
       },
       dist: {
         files: [{
-            expand: true,
-            cwd: '<%= config.app %>/images/',
-            src: ['**/*.{png,jpg,gif}'],
-            dest: '<%= config.dist %>/<%= pkg.version %>/images/'
+          expand: true,
+          cwd: '<%= config.app %>/images/',
+          src: ['**/*.{png,jpg,gif}'],
+          dest: '<%= config.dist %>/<%= pkg.version %>/images/'
         }]
       }
     },
 
     sass: {
-      dev: {
+      app: {
         options: {
           style: 'expanded'
         },
@@ -61,7 +73,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          style: 'expanded'
+          style: 'compressed'
         },
         files: {
           '<%= config.dist %>/<%= pkg.version %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
@@ -71,34 +83,64 @@ module.exports = function(grunt) {
 
     // inyecta dependencias al archivo
     wiredep: {
-      target: {
-        src: '<%= config.app %>/index.php' // point to your HTML file.
-      }
-    },
-
-    useminPrepare: {
-      html: '<%= config.app %>/index.php',
+      head: {
+        src: '<%= config.app %>/scripts/php/head.php'
+      },
+      tail: {
+        src: '<%= config.app %>/scripts/php/tail.php'
+      },
       options: {
-        dest: '<%= config.dist %>/<%= pkg.version %>'
+        ignorePath: '/../..',
+        // https://github.com/taptapship/wiredep#configuration
       }
-    },
-
-    // Performs rewrites based on rev and the useminPrepare configuration
-    usemin: {
-      html: ['<%= config.dist %>/<%= pkg.version %>/index.php'],
     },
 
     copy: {
-      task0: {
+      index:{
         src: '<%= config.app %>/index.php',
         dest: '<%= config.dist %>/<%= pkg.version %>/index.php'
-      }
+      },
+      head:{
+        src: '<%= config.app %>/scripts/php/head.php',
+        dest: '<%= config.dist %>/<%= pkg.version %>/scripts/php/head.php'
+      },
+      tail: {
+        src: '<%= config.app %>/scripts/php/tail.php',
+        dest: '<%= config.dist %>/<%= pkg.version %>/scripts/php/tail.php'
+      },
     },
 
-    // watch: {
-    //   files: ['<%= concat.dist.src %>'],
-    //   tasks: ['concat']
-    // }
+    watch: {
+      php: {
+        files: ['<%= config.app %>/**/*.php'],
+        tasks: ['phplint'],
+        options: {
+          livereload: true,
+          spawn: false,
+        }
+      },
+      js: {
+        files: [
+          '<%= concat.app.src %>',
+          '<%= uglify.app.src %>',
+        ],
+        tasks: ['concat:app', 'uglify:app'],
+        options: {
+          livereload: true,
+          spawn: false,
+        }
+      },
+      css: {
+        files: [
+          '<%= config.app %>/css/scss/main.scss'
+        ],
+        tasks: ['sass:app'],
+        options: {
+          livereload: true,
+          spawn: false,
+        }
+      },
+    }
 
   });
 
@@ -112,23 +154,25 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-filerev');
-  grunt.loadNpmTasks('grunt-usemin');
+  grunt.loadNpmTasks('grunt-phplint');
 
+  // en terminal 'grunt php':
+  grunt.registerTask('php', [
+    'phplint',
+    'sass:app',
+    'wiredep',
+    'concat:app',
+    'uglify:app',
+    'imagemin:dist',
+  ]);
   // en terminal 'grunt build':
-  // grunt.registerTask('build', [
-  //   'concat',
-  //   'uglify',
-  //   'imagemin:dist',
-  //   'sass:dist'
-  // ]);
   grunt.registerTask('build', [
+    'phplint',
     'sass:dist',
-    'copy:task0',
-    'useminPrepare',
-    'concat',
-    'cssmin',
-    'uglify',
-    'usemin'
+    'wiredep',
+    'concat:dist',
+    'uglify:dist',
+    'imagemin:dist',
   ]);
   // en terminal 'grunt' por defecto:
   grunt.registerTask('default', [
