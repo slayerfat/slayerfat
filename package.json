@@ -1,6 +1,6 @@
 {
   "name": "slayerfat.com.ve",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "desarrollo de slayerfat.com.ve y dojo de grunt, node, bower u otras tegnologias.",
   "main": "index.js",
   "scripts": {
