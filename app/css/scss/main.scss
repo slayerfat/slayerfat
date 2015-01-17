@@ -1,9 +1,37 @@
-$black : #333;
+@import "bootstrap";
 
-body {
-  color: $black;
-}
-
-h4 {
-  font-weight: bold;
+.container {
+  // container class
+  @include container-fixed();
+  // media queries
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+  .site-header{
+    @include make-row();
+    .site-logo{
+      @include make-sm-column(3);
+    }
+    .site-nav{
+      @include make-sm-column(9);
+    }
+  }
+  .site-content{
+    @include make-row();
+    .featured{
+      @include make-sm-column(12);
+    }
+  }
+  .site-widgets{
+    @include make-row();
+    .widget{
+      @include make-sm-column(4);
+    }
+  }
 }

@@ -176,12 +176,11 @@ module.exports = function(grunt) {
   ]);
   // en terminal 'grunt' por defecto:
   grunt.registerTask('default', [
-    'concat',
-    'uglify',
-    'imagemin:dev',
-    'sass:dev',
-    'useminPrepare',
-    'usemin'
+    'sass:app',
+    'wiredep',
+    'concat:app',
+    'uglify:app',
+    'imagemin:dist',
   ]);
 
 };
