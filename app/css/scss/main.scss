@@ -1,5 +1,9 @@
-$font : #333;
+$black : #333;
 
 body {
-  color: $font;
+  color: $black;
+}
+
+h4 {
+  font-weight: bold;
 }

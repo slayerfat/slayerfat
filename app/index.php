@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="author" content="Alejandro Granadillo">
-  <title>Untitled</title>
-  <link rel="stylesheet" href="css/main.css">
-</head>
+<?php require_once('scripts/php/head.php') ?>
 <body>
-<div>
-  <h1>Prueba</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Prueba</h1>
+      <h2>Prueba</h2>
+      <h3>Prueba</h3>
+      <h4>Prueba</h4>
+    </div>
+  </div>
 </div>
+
+<?php require_once('scripts/php/tail.php') ?>
 </body>
 </html>
