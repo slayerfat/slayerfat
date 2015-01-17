@@ -17,5 +17,14 @@
 <script type="text/javascript">
   helloWorld('hello world');
 </script>
+
+<div class="container">
+  <footer class="site-footer">
+    <div class="site-info">
+      <a href="#">Algun enlace</a>
+    </div>
+  </footer>
+</div>
+
 </body>
 </html>

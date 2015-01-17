@@ -34,4 +34,11 @@
       @include make-sm-column(4);
     }
   }
+  .site-footer{
+    @include make-row();
+    .site-info{
+      @include make-sm-column(4);
+      @include make-sm-column-offset(4);
+    }
+  }
 }
