@@ -1,9 +1,176 @@
-$black : #333;
+@import "settings";
+@import "foundation";
 
-body {
-  color: $black;
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+// @include grid-column(
+//   // Control the number of columns
+//   $columns:4,
+//   // Specify whether or not this is the last column in the row
+//   $last-column:true,
+//   // Choose whether or not to center this column
+//   $center:true,
+//   // Choose the number of columns to offset this element by
+//   $offset:3,
+//   // Specify how many columns to push this element past
+//   $push:3,
+//   // Specify how many columns to pull this element past
+//   $pull:9,
+//   // Set to true to remove column padding
+//   $collapse:true,
+//   // Specify the float direction
+//   $float:right
+// );
+
+// @include button(
+//   // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
+//   $padding,
+//   // Background color. We can set $bg:false for a transparent background. Default: $primary-color.
+//   $bg,
+//   // If true, set to button radius which is $global-radius or explicitly set radius amount in px (ex. $radius:10px). Default:false.
+//   $radius,
+//   // We can set $full-width:true to remove side padding extend width. Default:false
+//   $full-width,
+//   // We can set $disabled:true to create a disabled transparent button. Default:false
+//   $disabled,
+//   // $is-input - <input>s and <button>s take on strange padding. We added this to help fix that. Default:false
+//   $is-input
+// );
+
+// estilos del sitio
+
+#navbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  padding: 1.5em 0 1.5em 0;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1000;
+  ul{
+    margin: 0;
+    position: relative;
+    display: inline-block;
+  }
+
+  ul > li{
+    display: inline-block;
+    margin: 0 1em 0 1em;
+    padding: 0.85em;
+  }
+  
+  ul > li.active{
+    border-color: rgba(192,192,192,0.35);
+  }
+
+  ul > li > a,
+  ul > li > span{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
 }
 
-h4 {
-  font-weight: bold;
+// bienvenida
+.site-welcome{
+  // del container
+  height: 100%;
+  @include grid-row(nest-collapse);
+  background-color: $iron;
+  .welcome-titulo{
+    @include grid-column(8, true, true);
+    margin-top: 40%;
+    text-align: center;
+  }
+  .welcome-info{
+    @include grid-column(8, true, true);
+    text-align: center;
+  }
+}
+
+// descripcion
+.site-descripcion{
+  padding: 70px 0;
+  @include grid-row();
+  .descripcion-titulo{
+    @include grid-column(8, true, true);
+    text-align: center;
+    padding:
+  }
+  .descripcion-info{
+    @include grid-column(12);
+    text-align: justify;
+  }
+  .descripcion-boton{
+    @include grid-column(4, true, true);
+    a{
+      @include button(
+        // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
+          $button-med,
+        // Background color. We can set $bg:false for a transparent background. Default: $primary-color.
+          $primary-color,
+        // If true, set to button radius which is $global-radius or explicitly set radius amount in px (ex. $radius:10px). Default:false.
+          false,
+        // We can set $full-width:true to remove side padding extend width. Default:false
+          true
+        );
+    }
+  }
+}
+
+.site-catalogo{
+  @include grid-row();
+  .catalogo-carrusel{
+    @include grid-column(10, true, true);
+  }
+}
+
+#footer{
+  height: 300px;
+  @include grid-row(nest-collapse);
+  color: $iron;
+  background-color: $jet;
+  .footer-main{
+    @include grid-column(8, true, true);
+    text-align: center;
+    padding: 3em;
+  }
 }

@@ -62,18 +62,40 @@ module.exports = function(grunt) {
       }
     },
 
+    // sass: {
+    //   app: {
+    //     options: {
+    //       style: 'expanded',
+    //       loadPath: ['bower_components/foundation/scss']
+    //     },
+    //     files: {
+    //       '<%= config.app %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
+    //     }
+    //   },
+    //   dist: {
+    //     options: {
+    //       style: 'compressed'
+    //     },
+    //     files: {
+    //       '<%= config.dist %>/<%= pkg.version %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
+    //     }
+    //   }
+    // },
     sass: {
+      options: {
+        includePaths: ['bower_components/foundation/scss']
+      },
       app: {
         options: {
-          style: 'expanded'
+          outputStyle: 'expanded'
         },
         files: {
           '<%= config.app %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
-        }
+        }        
       },
       dist: {
         options: {
-          style: 'compressed'
+          outputStyle: 'compressed'
         },
         files: {
           '<%= config.dist %>/<%= pkg.version %>/css/main.css': '<%= config.app %>/css/scss/main.scss'
@@ -111,6 +133,7 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      grunt: { files: ['Gruntfile.js'] },
       php: {
         files: ['<%= config.app %>/**/*.php'],
         tasks: ['phplint'],
@@ -132,7 +155,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: [
-          '<%= config.app %>/css/scss/main.scss'
+          '<%= config.app %>/css/scss/**/*.scss'
         ],
         tasks: ['sass:app'],
         options: {
@@ -150,7 +173,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  // grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-filerev');
@@ -176,12 +200,11 @@ module.exports = function(grunt) {
   ]);
   // en terminal 'grunt' por defecto:
   grunt.registerTask('default', [
-    'concat',
-    'uglify',
-    'imagemin:dev',
-    'sass:dev',
-    'useminPrepare',
-    'usemin'
+    'sass:app',
+    'wiredep',
+    'concat:app',
+    'uglify:app',
+    'imagemin:dist',
   ]);
 
 };
