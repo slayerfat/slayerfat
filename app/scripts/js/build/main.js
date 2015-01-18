@@ -1,4 +1,7 @@
-// centra el elemento segun su altura
+$(document).ready(function(){
+  $('.catalogo-carrusel').slick();
+});
+;// centra el elemento segun su altura
 $(function() {
   var patron = /[0-9.]+/;
   var altura = $('.site-welcome').height();

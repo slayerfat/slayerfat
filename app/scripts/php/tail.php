@@ -5,6 +5,7 @@
 <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
 <script src="../bower_components/jquery-placeholder/jquery.placeholder.js"></script>
 <script src="../bower_components/foundation/js/foundation.js"></script>
+<script src="../bower_components/slick.js/slick/slick.min.js"></script>
 <!-- endbower -->
 <script src="scripts/js/build/build.min.js"></script>
 </body>

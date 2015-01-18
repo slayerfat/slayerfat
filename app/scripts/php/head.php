@@ -6,7 +6,8 @@
   <meta name="author" content="Alejandro Granadillo">
   <title>slayerfat.com.ve</title>
   <!-- bower:css -->
-  <!-- <link rel="stylesheet" href="../bower_components/foundation/css/foundation.css" /> -->
+  <link rel="stylesheet" href="../bower_components/foundation/css/foundation.css" />
+  <link rel="stylesheet" href="../bower_components/slick.js/slick/slick.css" />
   <!-- endbower -->
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>

@@ -48,4 +48,12 @@
   </div>
 </div>
 
+<div class="site-catalogo">
+  <div class="catalogo-carrusel">
+    <img src="http://placehold.it/300x300" alt="">
+    <img src="http://placehold.it/300x300" alt="">
+    <img src="http://placehold.it/300x300" alt="">
+  </div>
+</div>
+
 <?php require_once('scripts/php/tail.php') ?>

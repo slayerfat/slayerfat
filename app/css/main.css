@@ -6062,7 +6062,7 @@ th.hide-for-touch {
     text-align: center; }
 
 .site-descripcion {
-  height: 100%;
+  padding: 70px 0;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -6118,6 +6118,11 @@ th.hide-for-touch {
       padding-bottom: 1.0625rem;
       padding-left: 2rem;
       font-size: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1.0625rem;
+      padding-right: 0;
+      padding-left: 0;
+      width: 100%;
       background-color: #008CBA;
       border-color: #007095;
       color: #FFFFFF;
@@ -6126,3 +6131,21 @@ th.hide-for-touch {
         background-color: #007095; }
       .site-descripcion .descripcion-boton a:hover, .site-descripcion .descripcion-boton a:focus {
         color: #FFFFFF; }
+
+.site-catalogo {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5rem; }
+  .site-catalogo:before, .site-catalogo:after {
+    content: " ";
+    display: table; }
+  .site-catalogo:after {
+    clear: both; }
+  .site-catalogo .catalogo-carrusel {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 100%;
+    float: left; }
