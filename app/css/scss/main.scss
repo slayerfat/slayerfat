@@ -130,7 +130,7 @@
 }
 
 #footer{
-  height: 50%;
+  height: 300px;
   @include grid-row(nest-collapse);
   color: $iron;
   background-color: $jet;
