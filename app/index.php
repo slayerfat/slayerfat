@@ -50,9 +50,18 @@
 
 <div class="site-catalogo">
   <div class="catalogo-carrusel">
-    <img src="http://placehold.it/300x300" alt="">
-    <img src="http://placehold.it/300x300" alt="">
-    <img src="http://placehold.it/300x300" alt="">
+    <div>
+      <img src="http://placehold.it/500x300" alt="#">
+      <p>algo</p>
+    </div>
+    <div>
+      <img src="http://placehold.it/500x300" alt="#">
+      <p>algo</p>
+    </div>
+    <div>
+      <img src="http://placehold.it/500x300" alt="#">
+      <p>algo</p>
+    </div>
   </div>
 </div>
 

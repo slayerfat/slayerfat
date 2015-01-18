@@ -6027,13 +6027,10 @@ th.hide-for-touch {
 
 .site-welcome {
   height: 100%;
-  background-color: #CCCCCC;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 62.5rem; }
+  width: auto;
+  margin: 0;
+  max-width: none;
+  background-color: #CCCCCC; }
   .site-welcome:before, .site-welcome:after {
     content: " ";
     display: table; }
@@ -6147,5 +6144,9 @@ th.hide-for-touch {
   .site-catalogo .catalogo-carrusel {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
-    width: 100%;
-    float: left; }
+    width: 83.3333333333%;
+    float: right;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    float: none; }
