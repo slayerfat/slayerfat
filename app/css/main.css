@@ -6024,3 +6024,105 @@ th.hide-for-touch {
   th.show-for-print {
     display: table-cell !important; }
  }
+
+.site-welcome {
+  height: 100%;
+  background-color: #CCCCCC;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5rem; }
+  .site-welcome:before, .site-welcome:after {
+    content: " ";
+    display: table; }
+  .site-welcome:after {
+    clear: both; }
+  .site-welcome .welcome-titulo {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 66.6666666667%;
+    float: right;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    margin-top: 40%;
+    text-align: center; }
+  .site-welcome .welcome-info {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 66.6666666667%;
+    float: right;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    text-align: center; }
+
+.site-descripcion {
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5rem; }
+  .site-descripcion:before, .site-descripcion:after {
+    content: " ";
+    display: table; }
+  .site-descripcion:after {
+    clear: both; }
+  .site-descripcion .descripcion-titulo {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 66.6666666667%;
+    float: right;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    text-align: center; }
+  .site-descripcion .descripcion-info {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 100%;
+    float: left;
+    text-align: justify; }
+  .site-descripcion .descripcion-boton {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 33.3333333333%;
+    float: right;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    float: none; }
+    .site-descripcion .descripcion-boton a {
+      border-style: solid;
+      border-width: 0;
+      cursor: pointer;
+      font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+      font-weight: normal;
+      line-height: normal;
+      margin: 0 0 1.25rem;
+      position: relative;
+      text-decoration: none;
+      text-align: center;
+      -webkit-appearance: none;
+      border-radius: 0;
+      display: inline-block;
+      padding-top: 1rem;
+      padding-right: 2rem;
+      padding-bottom: 1.0625rem;
+      padding-left: 2rem;
+      font-size: 1rem;
+      background-color: #008CBA;
+      border-color: #007095;
+      color: #FFFFFF;
+      transition: background-color 300ms ease-out; }
+      .site-descripcion .descripcion-boton a:hover, .site-descripcion .descripcion-boton a:focus {
+        background-color: #007095; }
+      .site-descripcion .descripcion-boton a:hover, .site-descripcion .descripcion-boton a:focus {
+        color: #FFFFFF; }

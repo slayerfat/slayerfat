@@ -38,3 +38,77 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
+
+// @include grid-column(
+//   // Control the number of columns
+//   $columns:4,
+//   // Specify whether or not this is the last column in the row
+//   $last-column:true,
+//   // Choose whether or not to center this column
+//   $center:true,
+//   // Choose the number of columns to offset this element by
+//   $offset:3,
+//   // Specify how many columns to push this element past
+//   $push:3,
+//   // Specify how many columns to pull this element past
+//   $pull:9,
+//   // Set to true to remove column padding
+//   $collapse:true,
+//   // Specify the float direction
+//   $float:right
+// );
+
+// @include button(
+//   // $padding - Used to build padding for buttons Default: $button-med or rem-calc(12)
+//   $padding,
+//   // Background color. We can set $bg:false for a transparent background. Default: $primary-color.
+//   $bg,
+//   // If true, set to button radius which is $global-radius or explicitly set radius amount in px (ex. $radius:10px). Default:false.
+//   $radius,
+//   // We can set $full-width:true to remove side padding extend width. Default:false
+//   $full-width,
+//   // We can set $disabled:true to create a disabled transparent button. Default:false
+//   $disabled,
+//   // $is-input - <input>s and <button>s take on strange padding. We added this to help fix that. Default:false
+//   $is-input
+// );
+
+// estilos del sitio
+
+// bienvenida
+.site-welcome{
+  // del container
+  height: 100%;
+  background-color: $iron;
+  @include grid-row();
+  .welcome-titulo{
+    @include grid-column(8, true, true);
+    margin-top: 40%;
+    text-align: center;
+  }
+  .welcome-info{
+    @include grid-column(8, true, true);
+    text-align: center;
+  }
+}
+
+// descripcion
+.site-descripcion{
+  height: 100%;
+  @include grid-row();
+  .descripcion-titulo{
+    @include grid-column(8, true, true);
+    text-align: center;
+    padding:
+  }
+  .descripcion-info{
+    @include grid-column(12);
+    text-align: justify;
+  }
+  .descripcion-boton{
+    @include grid-column(4, true, true);
+    a{
+      @include button();
+    }
+  }
+}

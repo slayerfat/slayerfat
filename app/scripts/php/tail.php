@@ -7,9 +7,5 @@
 <script src="../bower_components/foundation/js/foundation.js"></script>
 <!-- endbower -->
 <script src="scripts/js/build/build.min.js"></script>
-<script type="text/javascript">
-  helloWorld('hello world');
-</script>
-
 </body>
 </html>
