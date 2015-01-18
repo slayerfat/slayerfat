@@ -65,4 +65,6 @@
   </div>
 </div>
 
+<?php require_once('scripts/php/footer.php') ?>
+
 <?php require_once('scripts/php/tail.php') ?>

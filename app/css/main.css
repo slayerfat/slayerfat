@@ -6150,3 +6150,27 @@ th.hide-for-touch {
     margin-left: auto;
     margin-right: auto;
     float: none; }
+
+#footer {
+  height: 50%;
+  width: auto;
+  margin: 0;
+  max-width: none;
+  color: #CCCCCC;
+  background-color: #222222; }
+  #footer:before, #footer:after {
+    content: " ";
+    display: table; }
+  #footer:after {
+    clear: both; }
+  #footer .footer-main {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 66.6666666667%;
+    float: right;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    text-align: center;
+    padding: 2em; }

@@ -1,5 +1,6 @@
-app/css/**/*.css
-app/scripts/js/build/**/*.js
+app/css/**
+!app/css/scss/
+app/scripts/js/build/**
 bower_components
 dist
 node_modules
