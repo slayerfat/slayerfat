@@ -1,4 +1,5 @@
 <?php require_once('scripts/php/head.php') ?>
+<?php require_once('scripts/php/navbar.php') ?>
 
 <div class="site-welcome">
   <div class="welcome-titulo">
@@ -6,7 +7,7 @@
       Texto Aleatorio
     </h1>
   </div>
-  <div class="welcome-info">
+  <div class="welcome-info subheader">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua.
   </div>
@@ -17,7 +18,7 @@
     <h1>
       Texto Aleatorio
     </h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <p class="subheader">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
   </div>
   <div class="descripcion-info">
     <p>

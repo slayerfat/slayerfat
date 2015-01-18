@@ -75,6 +75,40 @@
 
 // estilos del sitio
 
+#navbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  padding: 1.5em 0 1.5em 0;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1000;
+  ul{
+    margin: 0;
+    position: relative;
+    display: inline-block;
+  }
+
+  ul > li{
+    display: inline-block;
+    margin: 0 1em 0 1em;
+    padding: 0.85em;
+  }
+  
+  ul > li.active{
+    border-color: rgba(192,192,192,0.35);
+  }
+
+  ul > li > a,
+  ul > li > span{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+}
+
 // bienvenida
 .site-welcome{
   // del container
