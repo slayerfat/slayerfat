@@ -21,4 +21,5 @@ CREATE table imagen(
     on delete restrict
 )
 CHARACTER SET utf8 
-COLLATE utf8_general_ci;
+COLLATE utf8_general_ci
+COMMENT = 'relacionado con post';
