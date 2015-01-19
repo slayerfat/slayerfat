@@ -1,10 +1,8 @@
-CREATE table usuario(
+CREATE table adjunto(
   codigo int unsigned auto_increment primary key,
-  seudonimo varchar(20) not null unique,
-  clave varchar(60) not null COMMENT 'encrypt genera 60 chars.',
   status tinyint(1) unsigned NOT NULL default 1,
   codUsrReg int unsigned not null,
-  ipUsrReg varchar(40) not null COMMENT 'ipv6 largo de 39 chars.',
+  ipUsrReg varchar(40) not null,
   fecReg date not null,
   codUsrMod int unsigned not null,
   ipUsrMod varchar(40) not null,

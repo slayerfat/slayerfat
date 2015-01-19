@@ -12,6 +12,18 @@ CREATE TABLE post(
   codUsrMod int unsigned not null,
   ipUsrMod varchar(40) not null,
   fecMod date not null,
+  foreign key (codTexto)
+    references adquiere(codigo)
+    on update cascade
+    on delete restrict,
+  foreign key (codImagen)
+    references posee(codigo)
+    on update cascade
+    on delete restrict,
+  foreign key (codAdjunto)
+    references tiene(codigo)
+    on update cascade
+    on delete restrict,
   foreign key (codUsrReg)
     references usuario(codigo)
     on update cascade
