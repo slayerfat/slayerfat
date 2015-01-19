@@ -13,6 +13,23 @@ module.exports = function(grunt) {
     // Project settings
     config: config,
 
+    bump: {
+      options: {
+        files: ['package.json', "bower.json"],
+        updateConfigs: [],
+        commit: true,
+        commitMessage: 'Release %VERSION%',
+        commitFiles: ['package.json', "bower.json"],
+        createTag: true,
+        tagName: '%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: true,
+        pushTo: 'remote',
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+        globalReplace: false
+      }
+    },
+
     phplint:{
       app: ['<%= config.app %>/**/*.php']
     },
@@ -168,6 +185,7 @@ module.exports = function(grunt) {
   });
 
   // actividades o tareas o funciones o lo que sea:
+  grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
