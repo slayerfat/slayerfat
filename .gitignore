@@ -5,6 +5,6 @@ test
 tests
 .sass-cache
 .tmp
-app/scripts/js/**
-app/css/** 
-!app/css/scss/
+app/scripts/js/build/*
+app/css/*
+!app/css/scss/*
