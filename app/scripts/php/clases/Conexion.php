@@ -41,4 +41,25 @@ class Conexion extends mysqli{
       return true;
     endif;
   }
+
+  public function generarError($tipo = null){
+    switch ($tipo) :
+      case 'criptico':
+        $fecha  = date('d/m/y');
+        $error1 = substr($this->errno, 0, 2);
+        $error2 = substr($this->errno, 2, 4);
+        $self   = $_SERVER['PHP_SELF'];
+        return "Error inesperado en el sistema: (" . 
+          $fecha.$error1."-".$self."-".$error2 . ") ";
+        break;
+      
+      case 'full':
+        return "Error: (" . $this->errno . ") " . $this->error;
+        break;
+      
+      default:
+        return "Error: (" . $this->errno . ") " . $this->error;
+        break;
+    endswitch;
+  }
 }
