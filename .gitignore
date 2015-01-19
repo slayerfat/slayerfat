@@ -8,3 +8,5 @@ tests
 app/scripts/js/build/*
 app/css/*
 !app/css/scss/*
+app/scripts/php/clases/conexion.ini
+test.php
